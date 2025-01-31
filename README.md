@@ -1,7 +1,7 @@
 
 
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg)](https://wordpress.org/)
-[![Bricks Builder](https://img.shields.io/badge/Bricks-1.9.6%2B-orange.svg)](https://bricksbuilder.io/)
+[![Bricks Builder](https://img.shields.io/badge/Bricks-1.9%2B-orange.svg)](https://bricksbuilder.io/)
 
 Manually maintaining select/radio/checkbox field options for post titles in Bricks forms is time-consuming and error-prone. This solution automatically generates line-separated post titles for your select/dropdown fields.
 
@@ -9,7 +9,7 @@ Manually maintaining select/radio/checkbox field options for post titles in Bric
 
 ## Solution Code (Add to Child Theme's functions.php)
 
-```
+```php
 /**
  * Generates line-separated post titles for Bricks select fields
  * 
