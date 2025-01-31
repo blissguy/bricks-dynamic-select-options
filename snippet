@@ -1,0 +1,37 @@
+/**
+ * Generates line-separated post titles for Bricks select fields
+ * 
+ * @param string $post_type The post type to retrieve (default: 'post')
+ * @return string Line-separated titles or error message
+ */
+function brx_get_post_titles($post_type = 'post') {
+    // Sanitize post type parameter to prevent invalid values
+    $post_type = sanitize_key($post_type);
+    
+    $args = [
+        'post_type' => $post_type,
+        'posts_per_page' => -1,
+        'orderby' => 'title',
+        'order' => 'ASC',
+        'fields' => 'ids',       
+        'no_found_rows' => true  
+    ];
+
+    $query = new WP_Query($args);
+    $output = '';
+
+    foreach ($query->posts as $post_id) {
+        $output .= esc_html(get_the_title($post_id)) . "\n";
+    }
+
+    wp_reset_postdata();
+
+    if (empty($output)) {
+        return sprintf(
+            __('No %s found', 'your-text-domain'),
+            esc_html($post_type) 
+        );
+    }
+
+    return $output;
+}
